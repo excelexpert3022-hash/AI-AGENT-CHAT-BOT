@@ -51,7 +51,7 @@ exports.handler = async function(event, context) {
         })
       });
       const data = await res.json();
-      reply = data.content?.[0]?.text || 'Claude se jawab nahi aaya.';
+      reply = data.content?.[0]?.text || 'Error: ' + JSON.stringify(data);
 
     } else if (isLatest) {
       // Gemini — for latest/current info
@@ -97,7 +97,7 @@ exports.handler = async function(event, context) {
         })
       });
       const data = await res.json();
-      reply = data.choices?.[0]?.message?.content || 'Groq se jawab nahi aaya.';
+     reply = data.choices?.[0]?.message?.content || 'Error: ' + JSON.stringify(data);
     }
 
     return {
